@@ -1,4 +1,4 @@
-package com.mycompany.camel.blueprint;
+package com.github.camel.blueprint;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

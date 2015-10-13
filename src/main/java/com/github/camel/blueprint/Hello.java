@@ -1,4 +1,4 @@
-package com.mycompany.camel.blueprint;
+package com.github.camel.blueprint;
 
 /**
  * An interface for implementing Hello services.

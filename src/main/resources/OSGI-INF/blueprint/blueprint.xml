@@ -5,7 +5,7 @@
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-	<bean id="helloBean" class="com.mycompany.camel.blueprint.HelloBean">
+	<bean id="helloBean" class="com.github.camel.blueprint.HelloBean">
 		<property name="say" value="Hi from Camel" />
 	</bean>
 	
