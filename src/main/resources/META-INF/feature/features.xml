@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<features name="spe-rest-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+<features name="${project.artifactId}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 http://karaf.apache.org/xmlns/features/v1.0.0">
+
+	<repository>mvn:org.apache.camel.karaf/apache-camel/${project.version}/xml/features</repository>
 
 	<feature name="${project.artifactId}" description="Fuse Camel Swagger Example" version="${project.version}">
 		<bundle>mvn:${project.groupId}/${project.artifactId}/${project.version}</bundle>
