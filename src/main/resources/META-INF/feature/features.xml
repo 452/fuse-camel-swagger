@@ -4,9 +4,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 http://karaf.apache.org/xmlns/features/v1.0.0">
 
-	<repository>mvn:org.apache.camel.karaf/apache-camel/${project.version}/xml/features</repository>
+	<repository>mvn:org.apache.camel.karaf/apache-camel/${apache.camel.version}/xml/features</repository>
 
 	<feature name="${project.artifactId}" description="Fuse Camel Swagger Example" version="${project.version}">
+		<feature version="${apache.camel.version}">camel-core</feature>
+		<feature version="${apache.camel.version}">camel-blueprint</feature>
+		<feature version="${apache.camel.version}">camel-swagger</feature>
 		<bundle>mvn:${project.groupId}/${project.artifactId}/${project.version}</bundle>
     </feature>
 
