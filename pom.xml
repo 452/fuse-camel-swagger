@@ -138,14 +138,6 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
 
 			<!-- to generate the MANIFEST-FILE of the bundle -->
 			<plugin>
@@ -173,7 +165,7 @@
 						</Include-Resource>
 						<Import-Package>
 							org.apache.camel*;version=${apache.camel.version},
-							*
+							*;resolution:=optional
 						</Import-Package>
 						<Embed-Dependency>*;scope=compile;artifactId=!slf4j*|spring*|camel*|commons-logging*|jaxb*</Embed-Dependency>
 						<shade.phase>package</shade.phase>
