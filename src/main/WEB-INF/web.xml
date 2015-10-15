@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
-<servlet>
- 
-  <!-- Camel 2.15 onwards -->
-  <servlet-name>ApiDeclarationServlet</servlet-name>
-  <servlet-class>org.apache.camel.component.swagger.DefaultCamelSwaggerServlet</servlet-class>
- 
-  <!-- Camel 2.14.x -->
-  <init-param>
-    <param-name>base.path</param-name>
-    <param-value>http://localhost:8080/rest</param-value>
-  </init-param>
-  <init-param>
-    <param-name>api.path</param-name>
-    <param-value>http://localhost:8080/api-docs</param-value>
-  </init-param>
- 
- 
-  <init-param>
-    <param-name>api.version</param-name>
-    <param-value>1.2.3</param-value>
-  </init-param>
-  <init-param>
-    <param-name>api.title</param-name>
-    <param-value>User Services</param-value>
-  </init-param>
-  <init-param>
-    <param-name>api.description</param-name>
-    <param-value>Camel Rest Example with Swagger that provides an User REST service</param-value>
-  </init-param>
-  <load-on-startup>2</load-on-startup>
-</servlet>
- 
-<!-- swagger api declaration -->
-<servlet-mapping>
-  <servlet-name>ApiDeclarationServlet</servlet-name>
-  <url-pattern>/api-docs/*</url-pattern>
-</servlet-mapping>
+	<!-- to setup Camel Swagger api servlet when using Spring -->
+	<servlet>
+
+		<!-- Camel 2.15 onwards -->
+		<servlet-name>ApiDeclarationServlet</servlet-name>
+		<servlet-class>org.apache.camel.component.swagger.DefaultCamelSwaggerServlet</servlet-class>
+
+		<!-- Camel 2.15 onwards -->
+		<init-param>
+			<!-- we specify the base.path using relative notation, that means the actual path will be calculated at runtime as http://server:port/contextpath/rest -->
+			<param-name>base.path</param-name>
+			<param-value>rest</param-value>
+		</init-param>
+		<init-param>
+			<!-- we specify the api.path using relative notation, that means the actual path will be calculated at runtime as http://server:port/contextpath/api-docs -->
+			<param-name>api.path</param-name>
+			<param-value>api-docs</param-value>
+		</init-param>
+
+
+		<init-param>
+			<param-name>api.version</param-name>
+			<param-value>1.2.3</param-value>
+		</init-param>
+		<init-param>
+			<param-name>api.title</param-name>
+			<param-value>User Services</param-value>
+		</init-param>
+		<init-param>
+			<param-name>api.description</param-name>
+			<param-value>Camel Rest Example with Swagger that provides an User REST service</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!-- swagger api declaration -->
+	<servlet-mapping>
+		<servlet-name>ApiDeclarationServlet</servlet-name>
+		<url-pattern>/api-docs/*</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>RestSwaggerCorsFilter</filter-name
+     
+		<filter-class>org.apache.camel.component.swagger.RestSwaggerCorsFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>RestSwaggerCorsFilter</filter-name>
+		<url-pattern>/api-docs/*</url-pattern>
+		<url-pattern>/rest/*</url-pattern>
+	</filter-mapping>
 </web-app>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -159,13 +158,12 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Version>${project.version}</Bundle-Version>
 						<Private-Package>com.github.camel.blueprint.*</Private-Package>
-						<extensions>true</extensions>
 						<Include-Resource>
 							{maven-resources}, {maven-dependencies}
 						</Include-Resource>
 						<Import-Package>
-							org.apache.camel*;version=${apache.camel.version},
-							*;resolution:=optional
+							org.apache.camel;provide:=true;version=${apache.camel.version},
+							*
 						</Import-Package>
 						<Embed-Dependency>*;scope=compile;artifactId=!slf4j*|spring*|camel*|commons-logging*|jaxb*</Embed-Dependency>
 						<shade.phase>package</shade.phase>
